@@ -16,12 +16,12 @@ export default function CountdownTimer() {
       .then(() => {
         setCopyMessage("End time was copied to clipboard");
         setShowMessage(true);
-        //keep message visible for 5 seconds
+        //keep message visible for 3 seconds
         setTimeout(() => {
           setShowMessage(false);
         //after the fade out (0.5s), clear the message
-        setTimeout(()=> setCopyMessage(""), 1000);
-      }, 5000);
+        setTimeout(()=> setCopyMessage(""), 100);
+      }, 3000);
     })
       .catch(err => console.error("Error copying text:", err));
   };
@@ -159,7 +159,7 @@ requestAnimationFrame(animate);
   
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "20px", textAlign: "center", padding: "20px" }}>
-      <h1 style={{ fontSize: "32px", fontWeight: "bold" }}>Countdown Clock</h1>
+      <h1 style={{ fontSize: "32px", fontWeight: "bold", margin: "20px" }}>Countdown Clock</h1>
       <div>
         <div style={{ display: "flex", alignItems: "center", gap: "5px", width: "100%", justifyContent: "space-between", }}>
           <Button // Reset button to reset the input field and the countdown timer
@@ -209,7 +209,8 @@ requestAnimationFrame(animate);
           margin: "20px", 
           padding: "20px", 
           width: "350px", 
-          textAlign: "center", 
+          textAlign: "center",
+          Bordercolor: "black", 
           borderRadius: "10px", 
           transition: "background-color .3s ease-in-out", 
           backgroundColor: remainingTimeColor 
@@ -222,8 +223,10 @@ requestAnimationFrame(animate);
             onClick={() => handleButtonClick(() => setIsRunning(true), "#32CD32")} disabled={isRunning} 
             style={{ 
               backgroundColor: "#32CD32", 
-              color: "black", 
-              borderRadius: "10px" 
+              color: "white", 
+              borderRadius: "10px",
+              padding: "8px",
+              fontWeight: "bold",
               }}>
               Start</Button>
         <Button // Pause button to pause the countdown timer
@@ -232,7 +235,9 @@ requestAnimationFrame(animate);
               backgroundColor: "#FFD700", 
               color: "black", 
               padding: "8px", 
-              borderRadius: "10px" 
+              borderRadius: "10px",
+              padding: "8px",
+              fontWeight: "bold", 
               }}>
               Pause</Button>
         <Button // Stop button to stop the countdown timer
@@ -242,9 +247,11 @@ requestAnimationFrame(animate);
         }, )} 
             style={{ 
               backgroundColor: "#DC143C",  
-              color: "black", 
+              color: "white", 
               padding: "8px", 
-              borderRadius: "10px" 
+              borderRadius: "10px",
+              padding: "8px",
+              fontWeight: "bold", 
               }}>
               Stop</Button>
       </div>
@@ -254,7 +261,10 @@ requestAnimationFrame(animate);
             style={{
               backgroundColor: "#1E90FF",
               Bordercolor: "yellow",
-              color: "black",
+              borderweight: "20px",
+              padding: "8px",
+              fontWeight: "bold",
+              color: "white",
               borderRadius: "10px"
               }}>
               Share</Button>

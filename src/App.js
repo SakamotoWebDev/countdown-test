@@ -14,7 +14,7 @@ function App() {
         minHeight: '70vh'            // Take 70% viewport height
       }}
     >
-      <img src={image} alt="logo" style={{ marginBottom: '20px' }} />
+      <img src={image} alt="logo" style={{ scale: '.5', margin: '10px' }} />
       <CountdownTimer />
     </div>
   );
