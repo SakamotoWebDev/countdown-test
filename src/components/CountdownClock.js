@@ -161,7 +161,7 @@ requestAnimationFrame(animate);
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "20px", textAlign: "center" }}>
       <div>
         <div style={{ display: "flex", alignItems: "center", gap: "10px", width: "100%", justifyContent: "space-between" }}>
-          <Button 
+          <Button // Reset button to reset the input field and the countdown timer
             onClick={() => handleButtonClick(() => { 
               setIsRunning(false); 
               setTargetTime(""); 
@@ -176,7 +176,7 @@ requestAnimationFrame(animate);
             }}>
             Reset
           </Button>
-          <Input
+          <Input // Input field for the target time
             type="datetime-local"
             value={targetTime}
             onChange={(e) => setTargetTime(e.target.value)}
@@ -189,7 +189,7 @@ requestAnimationFrame(animate);
               fontWeight: "bold" 
             }}
           />
-          <Button 
+          <Button // Enter button to precalculate the target time
             onClick={() => handleButtonClick(emptyDefault, "#ffffff")} 
             style={{ 
               backgroundColor: "#ffffff", 
@@ -215,38 +215,46 @@ requestAnimationFrame(animate);
         </div>
       </div>
       <div style={{ display: "flex", gap: "20px" }}>
-        <Button onClick={() => handleButtonClick(() => setIsRunning(true), "#32CD32")} disabled={isRunning} 
-          style={{ 
-            backgroundColor: "#32CD32", 
-            color: "black", 
-            borderRadius: "10px" 
-              }}>Start</Button>
-        <Button onClick={() => handleButtonClick(() => setIsRunning(false), "#FFD700")} 
-          style={{ 
-            backgroundColor: "#FFD700", 
-            color: "black", 
-            padding: "8px", 
-            borderRadius: "10px" 
-              }}>Pause</Button>
-        <Button onClick={() => handleButtonClick(() => { 
-          setIsRunning(false); 
-          setRemainingTime({ days: 0, hours: 0, minutes: 0, seconds: 0 }); 
+        <Button // Start button to start the countdown timer
+            onClick={() => handleButtonClick(() => setIsRunning(true), "#32CD32")} disabled={isRunning} 
+            style={{ 
+              backgroundColor: "#32CD32", 
+              color: "black", 
+              borderRadius: "10px" 
+              }}>
+              Start</Button>
+        <Button // Pause button to pause the countdown timer
+            onClick={() => handleButtonClick(() => setIsRunning(false), "#FFD700")} 
+            style={{ 
+              backgroundColor: "#FFD700", 
+              color: "black", 
+              padding: "8px", 
+              borderRadius: "10px" 
+              }}>
+              Pause</Button>
+        <Button // Stop button to stop the countdown timer
+            onClick={() => handleButtonClick(() => { 
+            setIsRunning(false); 
+            setRemainingTime({ days: 0, hours: 0, minutes: 0, seconds: 0 }); 
         }, )} 
-          style={{ 
-            backgroundColor: "#DC143C",  
-            color: "black", 
-            padding: "8px", 
-            borderRadius: "10px" 
-              }}>Stop</Button>
+            style={{ 
+              backgroundColor: "#DC143C",  
+              color: "black", 
+              padding: "8px", 
+              borderRadius: "10px" 
+              }}>
+              Stop</Button>
       </div>
       <div>
-        <Button onClick={handleShare}
-          style={{
-            backgroundColor: "#1E90FF",
-            Bordercolor: "yellow",
-            color: "black",
-            borderRadius: "10px"
-              }}>Share</Button>
+        <Button // Share button to copy the target time to the clipboard
+            onClick={handleShare}
+            style={{
+              backgroundColor: "#1E90FF",
+              Bordercolor: "yellow",
+              color: "black",
+              borderRadius: "10px"
+              }}>
+              Share</Button>
       </div>
         {copyMessage && (
        <div 
