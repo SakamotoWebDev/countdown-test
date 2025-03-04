@@ -160,44 +160,59 @@ requestAnimationFrame(animate);
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "20px", textAlign: "center" }}>
       <div>
-        <Input
-          type="datetime-local"
-          value={targetTime}
-          onChange={(e) => setTargetTime(e.target.value)}
-          style={{ 
-            padding: "10px", 
-            fontSize: "16px", 
-            width: "225px", 
-            backgroundColor: "#ffffff", 
-            color: "black", 
-            fontWeight: "bold" 
-              }}
-        />
-      </div>
-      <div style={{ display: "flex", gap: "20px" }}>
-        <Button onClick={() => handleButtonClick(() => { 
-          setIsRunning(false); 
-          setTargetTime(""); 
-          setRemainingTime({ days: 0, hours: 0, minutes: 0, seconds: 0 }); 
-        }, )} 
-          style={{ 
-            backgroundColor: "#ffffff", 
-            color: "black", 
-            fontWeight: "bold", 
-            padding: "8px", 
-            borderRadius: "10px" 
-              }}>Reset</Button>
-        <Button onClick={() => handleButtonClick(emptyDefault, "#ffffff")} 
-          style={{ 
-            backgroundColor: "#ffffff", 
-            color: "black", 
-            fontWeight: "bold", 
-            padding: "8px", 
-            borderRadius: "10px" 
-              }}>Enter</Button>
-      </div>
-      <div style={{ fontSize: "32px", fontWeight: "bold", padding: "20px", width: "350px", textAlign: "center", borderRadius: "10px", transition: "background-color .3s ease-in-out", backgroundColor: remainingTimeColor }}>
-        {remainingTime.days}d {remainingTime.hours}h {remainingTime.minutes}m {remainingTime.seconds}s
+        <div style={{ display: "flex", alignItems: "center", gap: "10px", width: "100%", justifyContent: "space-between" }}>
+          <Button 
+            onClick={() => handleButtonClick(() => { 
+              setIsRunning(false); 
+              setTargetTime(""); 
+              setRemainingTime({ days: 0, hours: 0, minutes: 0, seconds: 0 }); 
+            }, "#ffffff")} 
+            style={{ 
+              backgroundColor: "#ffffff", 
+              color: "black", 
+              fontWeight: "bold", 
+              padding: "8px", 
+              borderRadius: "10px" 
+            }}>
+            Reset
+          </Button>
+          <Input
+            type="datetime-local"
+            value={targetTime}
+            onChange={(e) => setTargetTime(e.target.value)}
+            style={{ 
+              padding: "10px", 
+              fontSize: "16px", 
+              width: "225px", 
+              backgroundColor: "#ffffff", 
+              color: "black", 
+              fontWeight: "bold" 
+            }}
+          />
+          <Button 
+            onClick={() => handleButtonClick(emptyDefault, "#ffffff")} 
+            style={{ 
+              backgroundColor: "#ffffff", 
+              color: "black", 
+              fontWeight: "bold", 
+              padding: "8px", 
+              borderRadius: "10px" 
+            }}>
+            Enter
+          </Button>
+        </div>
+        <div style={{ 
+          fontSize: "32px", 
+          fontWeight: "bold", 
+          padding: "20px", 
+          width: "350px", 
+          textAlign: "center", 
+          borderRadius: "10px", 
+          transition: "background-color .3s ease-in-out", 
+          backgroundColor: remainingTimeColor 
+        }}>
+          {remainingTime.days}d {remainingTime.hours}h {remainingTime.minutes}m {remainingTime.seconds}s
+        </div>
       </div>
       <div style={{ display: "flex", gap: "20px" }}>
         <Button onClick={() => handleButtonClick(() => setIsRunning(true), "#32CD32")} disabled={isRunning} 
