@@ -158,18 +158,19 @@ requestAnimationFrame(animate);
   };
   
   return (
-    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "20px", textAlign: "center" }}>
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "20px", textAlign: "center", padding: "20px" }}>
+      <h1 style={{ fontSize: "32px", fontWeight: "bold" }}>Countdown Clock</h1>
       <div>
-        <div style={{ display: "flex", alignItems: "center", gap: "10px", width: "100%", justifyContent: "space-between" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "5px", width: "100%", justifyContent: "space-between", }}>
           <Button // Reset button to reset the input field and the countdown timer
             onClick={() => handleButtonClick(() => { 
               setIsRunning(false); 
               setTargetTime(""); 
               setRemainingTime({ days: 0, hours: 0, minutes: 0, seconds: 0 }); 
-            }, "#ffffff")} 
+            },)} 
             style={{ 
-              backgroundColor: "#ffffff", 
-              color: "black", 
+              backgroundColor: "grey", 
+              color: "White", 
               fontWeight: "bold", 
               padding: "8px", 
               borderRadius: "10px" 
@@ -181,6 +182,7 @@ requestAnimationFrame(animate);
             value={targetTime}
             onChange={(e) => setTargetTime(e.target.value)}
             style={{ 
+              margin: "5px",
               padding: "10px", 
               fontSize: "16px", 
               width: "225px", 
@@ -190,10 +192,10 @@ requestAnimationFrame(animate);
             }}
           />
           <Button // Enter button to precalculate the target time
-            onClick={() => handleButtonClick(emptyDefault, "#ffffff")} 
+            onClick={() => handleButtonClick(emptyDefault,)} 
             style={{ 
-              backgroundColor: "#ffffff", 
-              color: "black", 
+              backgroundColor: "grey", 
+              color: "White", 
               fontWeight: "bold", 
               padding: "8px", 
               borderRadius: "10px" 
@@ -203,7 +205,8 @@ requestAnimationFrame(animate);
         </div>
         <div style={{ 
           fontSize: "32px", 
-          fontWeight: "bold", 
+          fontWeight: "bold",
+          margin: "20px", 
           padding: "20px", 
           width: "350px", 
           textAlign: "center", 
@@ -256,7 +259,7 @@ requestAnimationFrame(animate);
               }}>
               Share</Button>
       </div>
-        {copyMessage && (
+        {copyMessage && ( // Display a message when the target time is copied to the clipboard
        <div 
           style={{ 
             position: "fixed",
