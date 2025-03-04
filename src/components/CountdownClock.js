@@ -135,14 +135,19 @@ requestAnimationFrame(animate);
       });
     }, 1000);
     return () => clearInterval(timer);
-  }, [isRunning, targetTime]);
+  }, [isRunning, targetTime]); //Ensure the effect updates when targetTime changes
   
-  const enterFunction = () => {
+  const emptyDefault = () => {
     if (!targetTime) {
       const now = new Date();
       now.setMinutes(now.getMinutes() + 10);
-      setTargetTime(now.toISOString().slice(0, 16));
-    } else {
+      // Convert to localzone format for datetime-local input
+      const localTime = new Date(now.getTime() - now.getTimezoneOffset() * 60000)
+        .toISOString()
+        .slice(0, 16);
+      setTargetTime(localTime);
+    }
+     else {
       setRemainingTime(calculateRemainingTime());
     }
   };
@@ -170,7 +175,11 @@ requestAnimationFrame(animate);
         />
       </div>
       <div style={{ display: "flex", gap: "20px" }}>
-        <Button onClick={() => handleButtonClick(() => { setIsRunning(false); setRemainingTime({ days: 0, hours: 0, minutes: 0, seconds: 0 }); }, "#ffffff")} 
+        <Button onClick={() => handleButtonClick(() => { 
+          setIsRunning(false); 
+          setTargetTime(""); 
+          setRemainingTime({ days: 0, hours: 0, minutes: 0, seconds: 0 }); 
+        }, )} 
           style={{ 
             backgroundColor: "#ffffff", 
             color: "black", 
@@ -178,7 +187,7 @@ requestAnimationFrame(animate);
             padding: "8px", 
             borderRadius: "10px" 
               }}>Reset</Button>
-        <Button onClick={() => handleButtonClick(enterFunction, "#ffffff")} 
+        <Button onClick={() => handleButtonClick(emptyDefault, "#ffffff")} 
           style={{ 
             backgroundColor: "#ffffff", 
             color: "black", 
@@ -204,7 +213,10 @@ requestAnimationFrame(animate);
             padding: "8px", 
             borderRadius: "10px" 
               }}>Pause</Button>
-        <Button onClick={() => handleButtonClick(() => { setIsRunning(false); setRemainingTime({ days: 0, hours: 0, minutes: 0, seconds: 0 }); }, "#DC143C")} 
+        <Button onClick={() => handleButtonClick(() => { 
+          setIsRunning(false); 
+          setRemainingTime({ days: 0, hours: 0, minutes: 0, seconds: 0 }); 
+        }, )} 
           style={{ 
             backgroundColor: "#DC143C",  
             color: "black", 
@@ -216,6 +228,7 @@ requestAnimationFrame(animate);
         <Button onClick={handleShare}
           style={{
             backgroundColor: "#1E90FF",
+            Bordercolor: "yellow",
             color: "black",
             borderRadius: "10px"
               }}>Share</Button>

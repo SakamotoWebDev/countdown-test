@@ -1,6 +1,6 @@
 import React from "react";
 import image from './logo.webp';
-import './App.css';
+//import './App.css';
 import CountdownTimer from "./components/CountdownClock";
 
 function App() {
