@@ -1,23 +1,22 @@
-import logo from './logo.svg';
+import React from "react";
+import image from './logo.webp';
 import './App.css';
+import CountdownTimer from "./components/CountdownClock";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div
+      className="App"
+      style={{
+        display: 'flex',
+        flexDirection: 'column',      // Stack items vertically
+        alignItems: 'center',         // Center horizontally
+        justifyContent: 'center',     // Center vertically
+        minHeight: '70vh'            // Take full viewport height
+      }}
+    >
+      <img src={image} alt="logo" style={{ marginBottom: '20px' }} />
+      <CountdownTimer />
     </div>
   );
 }
