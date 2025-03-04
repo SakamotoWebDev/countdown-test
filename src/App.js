@@ -11,7 +11,7 @@ function App() {
         flexDirection: 'column',      // Stack items vertically
         alignItems: 'center',         // Center horizontally
         justifyContent: 'center',     // Center vertically
-        minHeight: '70vh'            // Take full viewport height
+        minHeight: '70vh'            // Take 70% viewport height
       }}
     >
       <img src={image} alt="logo" style={{ marginBottom: '20px' }} />
