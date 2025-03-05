@@ -243,8 +243,7 @@ requestAnimationFrame(animate);
         <Button // Stop button to stop the countdown timer
             onClick={() => handleButtonClick(() => { 
             setIsRunning(false); 
-            setRemainingTime({ days: 0, hours: 0, minutes: 0, seconds: 0 }); 
-        }, )} 
+            setRemainingTime({ days: 0, hours: 0, minutes: 0, seconds: 0 }); }, "#DC143C")}
             style={{ 
               backgroundColor: "#DC143C",  
               color: "white", 

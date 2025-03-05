@@ -11,10 +11,10 @@ function App() {
         flexDirection: 'column',      // Stack items vertically
         alignItems: 'center',         // Center horizontally
         justifyContent: 'center',     // Center vertically
-        minHeight: '70vh'            // Take 70% viewport height
+        minHeight: '30vh'            // Take 30% viewport height
       }}
     >
-      <img src={image} alt="logo" style={{ scale: '.5', margin: '10px' }} />
+      <img src={image} alt="logo" style={{ scale: '.7', margin: '20px', }} />
       <CountdownTimer />
     </div>
   );
